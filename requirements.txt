@@ -1,0 +1,8 @@
+langchain-text-splitters
+langchain 
+langchain-core 
+langchain-community
+pinecone
+ipykernel
+pypdf
+google-generativeai
