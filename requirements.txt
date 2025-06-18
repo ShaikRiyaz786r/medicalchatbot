@@ -6,3 +6,4 @@ pinecone
 ipykernel
 pypdf
 google-generativeai
+Flask
