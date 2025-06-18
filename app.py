@@ -3,26 +3,21 @@ from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 from pinecone import Pinecone
 import google.generativeai as genai
-
-# Load environment variables from .env file
 load_dotenv()
 
 app = Flask(__name__)
 
-# Initialize clients securely
 try:
-    genai.configure(api_key="AIzaSyDeZsXSMnMPi0A4jqu1YvXh9lABPkwufEA")
-    pc = Pinecone(api_key='pcsk_32k22V_77oFKp7mL369qkiGoQpdN5PhdiixMoZg94f1tsXhkFkQVZ4vQg8RRo1mEV3u9RD')
+    genai.configure(api_key="")
+    pc = Pinecone(api_key='')
 except (KeyError, TypeError) as e:
     print("FATAL ERROR: Ensure GOOGLE_API_KEY and PINECONE_API_KEY are set in your .env file.")
     exit()
 
-# Define models and connect to the index
 embedding_model = "models/text-embedding-004"
 llm = genai.GenerativeModel("gemini-1.5-flash-latest")
 index_name = "medical-chatbot2"
 
-# Check if index exists before getting a handle to it
 if index_name in pc.list_indexes().names():
     index = pc.Index(index_name)
     print("Clients and models initialized successfully.")

@@ -5,14 +5,11 @@ import google.generativeai as genai
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-# Load environment variables from .env file
 load_dotenv()
 
-# --- INITIALIZATION ---
-print("Initializing clients...")
 try:
-    genai.configure(api_key="AIzaSyDeZsXSMnMPi0A4jqu1YvXh9lABPkwufEA")
-    pc = Pinecone(api_key='pcsk_32k22V_77oFKp7mL369qkiGoQpdN5PhdiixMoZg94f1tsXhkFkQVZ4vQg8RRo1mEV3u9RD')
+    genai.configure(api_key="")
+    pc = Pinecone(api_key='')
 except (KeyError, TypeError) as e:
     print("FATAL ERROR: Make sure GOOGLE_API_KEY and PINECONE_API_KEY are in your .env file.")
     exit()
